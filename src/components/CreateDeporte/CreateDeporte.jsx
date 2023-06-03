@@ -70,8 +70,9 @@ const CreateDeporte = () => {
    
       const handleSubmit = (e) =>{
             e.preventDefault()        
-           
-            dispatch(actions.createDeporte(state))
+           if(errors.errorName !== '' || errors.errorDescription !== '' || errors.errorDescription !== '')
+           return false
+           else dispatch(actions.createDeporte(state))
       }
       
 
@@ -79,15 +80,15 @@ const CreateDeporte = () => {
       <form onSubmit={handleSubmit}>
             <label>Nombre: </label>
             <input type="text" name='nombre'  onChange={handleChange}/>
-            <p>{errors.errorName}</p>
+            {errors.errorName && <p>{errors.errorName}</p>}
 
             <label >Descripción: </label>
             <textarea name="descripcion" onChange={handleChange}></textarea>
-            <p>{errors.errorDescription}</p>
+            {errors.errorDescription && <p>{errors.errorDescription}</p>}
 
             <label >Reglas: </label>
             <input type="text" name='reglas'  onChange={handleChange}/>
-            <p>{errors.errorReglas}</p>
+            {errors.errorReglas &&<p>{errors.errorReglas}</p>}
 
             <label >Imagen: </label>
             <input type="text" name='imagen'  onChange={handleChange} />

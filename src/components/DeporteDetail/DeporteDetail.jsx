@@ -38,13 +38,13 @@ React.useEffect(()=>{
 
    return <div className='detail'>
      
-      <h1>{detail.nombre}</h1>
-      <img src={detail.imagen} alt={detail.nombre} />
-      <h3>Descripcion: {detail.descripcion}</h3>
-      <h5>Reglas: {detail.reglas}</h5>
-      <h5>Equipamiento: {detail.equipamiento}</h5>
-      <h5>Origen: {detail.lugar_de_origen}</h5>
-      <h5>Ligas destacadas: {detail.ligas_destacadas}</h5>
+      <h1>{detail?.nombre}</h1>
+      <img src={detail?.imagen} alt={detail?.nombre} />
+      <h3>Descripcion: {detail?.descripcion}</h3>
+      <h5>Reglas: {detail?.reglas}</h5>
+      <h5>Equipamiento: {detail?.equipamiento}</h5>
+      <h5>Origen: {detail?.lugar_de_origen}</h5>
+      <h5>Ligas destacadas: {detail?.ligas_destacadas}</h5>
    </div>;
 };
 
