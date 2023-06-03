@@ -1,4 +1,10 @@
-/* 1️⃣ ***COMPONENTE APP*** 1️⃣
+import { Route, Routes } from "react-router-dom"
+import React from "react"
+import Nav from "./components/Nav/Nav"
+import Home from "./components/Home/Home"
+import DeporteDetail from "./components/DeporteDetail/DeporteDetail"
+import CreateDeporte from "./components/CreateDeporte/CreateDeporte"
+/* ⿡ **COMPONENTE APP** ⿡
 Implementar el componente App. En este ejercicio tendrás que crear diferentes RUTAS para otros componentes. 
 ¡Ten en cuenta los nombres y las especificaciones de cada uno!
 
@@ -9,10 +15,17 @@ REQUISITOS
 🟢 El componente CreateDeporte debe renderizarse en la ruta "/deportes/create".
 */
 
-import React from "react";
-
 const App = () => {
-  return <div></div>;
-};
+  return (
+    <div>
+      <Nav />
+      <Routes>
+        <Route path="/" element={<Home />} />
+        <Route path="/deportes/:id" element={<DeporteDetail />} />
+        <Route path="/deportes/create" element={<CreateDeporte />} />
+      </Routes>
+    </div>
+  )
+}
 
-export default App;
+export default App

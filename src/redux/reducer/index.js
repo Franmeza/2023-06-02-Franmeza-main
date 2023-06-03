@@ -1,5 +1,10 @@
 /* 4️⃣ ***REDUCER*** 4️⃣ */
 /* Importa las action-types aquí. */
+import { GET_ALL_DEPORTES,
+   GET_DEPORTE_DETAIL,
+   CREATE_DEPORTE,
+   DELETE_DEPORTE
+ } from "../actions";
 
 const initialState = {
    deportes: [],
@@ -23,6 +28,24 @@ REQUISITOS
 const rootReducer = (state = initialState, action) => {
    // Tu código:
    switch (action.type) {
+
+      case GET_ALL_DEPORTES:
+         return{...state, deportes: action.payload}
+
+      case GET_DEPORTE_DETAIL:
+         return{...state, deporteDetail: action.payload}
+
+      case CREATE_DEPORTE:
+         return{...state, deportes:[...state.deportes , action.payload] }
+
+         case DELETE_DEPORTE:
+            return{...state, deportes: state.deportes.filter((deporte)=>
+               deporte.id !== action.payload
+            ) }
+
+      default:
+         return {...state}
+
    }
 };
 

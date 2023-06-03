@@ -20,17 +20,45 @@ IMPORTANTE
 import './home.css';
 import React, { Component } from 'react';
 import { connect } from 'react-redux';
+import mainImage from "../../img-cp2/main-image-cp2.jpg"
+import * as actions from "./../../redux/actions/index";
+import DeporteCard from '../DeporteCard/DeporteCard';
 
 export class Home extends Component {
-   componentDidMount() {}
+
+   componentDidMount() {
+      this.props.getAllDeportes()
+   }
 
    render() {
-      return <div className='home'></div>;
+      return <div className='home'>
+         <h1>Deportes</h1>
+         <img src={mainImage} alt="deporte-logo" />
+         <h3>Deportes:</h3>
+         <h4>Checkpoint M2</h4>
+         {this.props.deportes?.map((deporte)=>{
+            return <DeporteCard 
+               key = {deporte.id}
+               id ={deporte.id}
+               nombre = {deporte.nombre}
+               imagen = {deporte.imagen}
+               lugar_de_origen = {deporte.lugar_de_origen}
+            />
+         })}
+      </div>;
    }
 }
 
-export const mapStateToProps = undefined;
+export const mapStateToProps = (state)=>{
+   return {deportes : state.deportes}
+};
 
-export const mapDispatchToProps = undefined;
+export const mapDispatchToProps = (dispatch)=>{
+   return {
+      getAllDeportes: () =>{
+         dispatch(actions.getAllDeportes())
+      }
+   }
+};
 
 export default connect(mapStateToProps, mapDispatchToProps)(Home);

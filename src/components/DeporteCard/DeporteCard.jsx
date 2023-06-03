@@ -14,9 +14,27 @@ IMPORTANTE
 
 import './deporteCard.css';
 import React from 'react';
+import { useDispatch } from 'react-redux';
+import { Link } from 'react-router-dom';
+import  * as actions from "../../redux/actions";
 
 const DeporteCard = (props) => {
-   return <div className='card'></div>;
+
+   const dispatch = useDispatch()
+
+   const deleteDeporte = () =>{
+      dispatch(actions.deleteDeporte(props.id))
+   }
+
+   return <div className='card'>
+      <button onClick={deleteDeporte}>x</button>
+      <h3>{props.nombre}</h3>
+      <img src={props.imagen} alt={props.nombre} />
+      <p>Origen: {props.lugar_de_origen}</p>
+      <Link to = {`/deportes/${props.id}`}>
+         {props.nombre}
+      </Link>
+   </div>;
 };
 
 export default DeporteCard;

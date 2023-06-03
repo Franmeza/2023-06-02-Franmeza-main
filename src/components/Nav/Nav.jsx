@@ -11,12 +11,17 @@ IMPORTANTE
 ❗Asegurate de colocar bien la palabra 'deporte' o 'deportes' en los casos requeridos.
 */
 
-import './nav.css';
-
-import React from 'react';
+import "./nav.css"
+import { Link } from "react-router-dom"
+import React from "react"
 
 const Nav = () => {
-   return <div className='nav'></div>;
-};
+  return (
+    <div className="nav">
+      <Link to="/">Home</Link>
+      <Link to="/deportes/create">Create Deporte</Link>
+    </div>
+  )
+}
 
-export default Nav;
+export default Nav
